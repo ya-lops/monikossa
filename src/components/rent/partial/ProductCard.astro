@@ -4,7 +4,7 @@ const { data } = Astro.props;
 
 <article class="app-product-card">
   <div class="_image">
-    <img src={data.image} />
+    <img src={data.image} loading="lazy"/>
   </div>
   <header class="_info">
     <div class="_price">{data.price} &#8381;</div>

@@ -4,7 +4,7 @@ const { data } = Astro.props;
 
 <section class="app-review-card">
   <div class="_image">
-    <img src={data.image} alt="" />
+    <img src={data.image} alt="" loading="lazy"/>
   </div>
   <div class="_name">{data.name}</div>
   <p class="_text">"{data.text}"</p>

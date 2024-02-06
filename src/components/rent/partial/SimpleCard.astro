@@ -4,7 +4,7 @@ const { data } = Astro.props;
 
 <div class="app-card">
   <div class="_image">
-    <img src={data.image} alt="" />
+    <img src={data.image} alt="" loading="lazy"/>
   </div>
   <div class="_label">{data.name}</div>
 </div>
