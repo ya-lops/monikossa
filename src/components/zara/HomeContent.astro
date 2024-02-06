@@ -1,0 +1,91 @@
+---
+
+---
+
+<main class="_content">
+  <section>
+    <picture>
+      <source
+        srcset="/images/zara/image_01_small.jpg"
+        media="(max-width: 1000px)"
+      />
+      <img src="/images/zara/image_01.jpg" alt="" />
+    </picture>
+  </section>
+  <section>
+    <picture>
+      <source
+        srcset="/images/zara/image_02_small.jpg"
+        media="(max-width: 1000px)"
+      />
+      <img src="/images/zara/image_02.jpg" alt="" />
+    </picture>
+  </section>
+  <section>
+    <picture>
+      <source
+        srcset="/images/zara/image_03_small.jpg"
+        media="(max-width: 1000px)"
+      />
+      <img src="/images/zara/image_03.jpg" alt="" />
+    </picture>
+  </section>
+  <section>
+    <picture>
+      <source
+        srcset="/images/zara/image_04_small.jpg"
+        media="(max-width: 1000px)"
+      />
+      <img src="/images/zara/image_04.jpg" alt="" />
+    </picture>
+  </section>
+  <section>
+    <picture>
+      <source
+        srcset="/images/zara/image_05_small.jpg"
+        media="(max-width: 1000px)"
+      />
+      <img src="/images/zara/image_05.jpg" alt="" />
+    </picture>
+  </section>
+  <section>
+    <picture>
+      <source
+        srcset="/images/zara/image_06_small.jpg"
+        media="(max-width: 1000px)"
+      />
+      <img src="/images/zara/image_06.jpg" alt="" />
+    </picture>
+  </section>
+</main>
+
+<style lang="scss">
+  ._content {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-rows: minmax(100vh, 1fr);
+    position: relative;
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    // transform-style: preserve-3d;
+
+    section {
+      display: grid;
+      place-items: center;
+      position: sticky;
+      top: 0;
+      // height: 100dvh;
+      margin: 0;
+      scroll-snap-align: start;
+      overflow: hidden;
+
+      img {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+</style>

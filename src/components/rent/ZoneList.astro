@@ -1,0 +1,26 @@
+---
+import SimpleCard from "./partial/SimpleCard.astro";
+
+import zones from "@/data/rent/zones";
+
+const data = zones
+---
+
+
+<div class="app-popular">
+  <div class="container">
+    <div class="app-popular__inner">
+      {data.map((zone) => <SimpleCard data={zone} />)}
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .app-popular {
+    &__inner {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2.4rem;
+    }
+  }
+</style>

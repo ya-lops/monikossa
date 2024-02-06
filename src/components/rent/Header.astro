@@ -1,0 +1,76 @@
+---
+import ButtonLink from "./partial/ButtonLink.astro";
+import Logo from "./partial/Logo.astro";
+import Nav from "./partial/Nav.astro";
+---
+
+<header class="app-header">
+  <div class="container">
+    <div class="app-header__inner">
+      <a href="/rent/" class="_logo">
+        <Logo />
+      </a>
+
+      <div class="_nav">
+        <Nav />
+      </div>
+
+      <div class="_actions">
+        <ButtonLink href="" theme="ghost">Вход</ButtonLink>
+        <ButtonLink href="" theme="primary">Регистрация</ButtonLink>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style lang="scss">
+  .app-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--color-surface-0-light);
+    isolation: isolate;
+
+    @supports (animation-timeline: view()) {
+      animation-timeline: view();
+      animation-name: showShadow;
+      animation-range: contain 10% exit 50%;
+    }
+
+    @supports not (animation-timeline: view()) {
+      box-shadow: 0 0 22px rgba(0, 0, 0, 0.075);
+    }
+
+    &__inner {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      padding-block: 2rem;
+    }
+
+    ._logo {
+      text-decoration: none;
+      user-select: none;
+    }
+
+    ._nav {
+      justify-self: center;
+    }
+
+    ._actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    @keyframes showShadow {
+      from {
+        box-shadow: 0 0 0px rgba(0, 0, 0, 0.075);
+      }
+
+      to {
+        box-shadow: 0 0 22px rgba(0, 0, 0, 0.075);
+      }
+    }
+  }
+</style>

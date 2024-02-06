@@ -1,0 +1,47 @@
+---
+const { data } = Astro.props;
+---
+
+<section class="app-review-card">
+  <div class="_image">
+    <img src={data.image} alt="" />
+  </div>
+  <div class="_name">{data.name}</div>
+  <p class="_text">"{data.text}"</p>
+</section>
+
+<style lang="scss">
+  .app-review-card {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    grid-template-areas: "img name" "text text";
+    gap: 1.6rem 2.4rem;
+    padding: 1.6rem;
+    border: 1px solid var(--color-line);
+    border-radius: 1.6rem;
+
+    ._image {
+      grid-area: img;
+      aspect-ratio: 1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0.4rem;
+        overflow: crop;
+        object-fit: cover;
+      }
+    }
+
+    ._name {
+      grid-area: name;
+      font-size: 2rem;
+      font-weight: 500;
+    }
+
+    ._text {
+      grid-area: text;
+      font-style: italic;
+    }
+  }
+</style>

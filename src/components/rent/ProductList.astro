@@ -1,0 +1,25 @@
+---
+import ProductCard from "./partial/ProductCard.astro";
+import objects from "@/data/rent/objects";
+
+const data = objects;
+
+---
+
+<div class="app-products">
+  <div class="container">
+    <div class="app-products__inner">
+      {data.map((product) => <ProductCard data={product} />)}
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .app-products {
+    &__inner {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2.4rem;
+    }
+  }
+</style>

@@ -1,0 +1,85 @@
+---
+import Counter from "./partial/Counter.astro";
+
+interface Hero {
+  title: string;
+  text: string;
+  image: string;
+}
+
+const { title, text, image, classes, ...rest } = Astro.props;
+
+const data = {
+  title: "Недвижимость в кратчайшие сроки",
+  text: "Ищите новые квартиры, земельные участки, дома и землю, проекты домов и многое другое.",
+  imageLink:
+    "https://img.jamesedition.com/listing_images/2019/11/12/08/36/58/a659a925-63db-4a55-8f43-2a478f8d2ac1/je/2000xxs.jpg",
+};
+---
+
+<section class:list={["app-hero", { classes }, { ...rest }]}>
+  <div class="app-hero__inner">
+    <div class="_text">
+      <h1 class="_title">{data.title}</h1>
+      <p>{data.text}</p>
+      <Counter/>
+    </div>
+    <div class="_image">
+      <img src={data.imageLink} alt="" />
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .app-hero {
+    --_height: clamp(500px, 100dvh, 800px);
+
+    display: grid;
+    grid-template-columns: 100%;
+    height: var(--_height);
+    background: var(--color-surface-1);
+    overflow: clip;
+
+    &__inner {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1fr) repeat(
+          2,
+          minmax(0, calc(var(--container-max-width) / 2))
+        )
+        minmax(0, 1fr);
+      grid-template-areas: ". text image image";
+      height: 100%;
+    }
+
+    ._text {
+      display: flex;
+      flex-flow: column;
+      gap: 1.6rem;
+      grid-area: text;
+      align-self: center;
+
+      h1 {
+        color: var(--color-text-primary);
+        font-size: 5.6rem;
+        line-height: 1.15;
+        font-weight: 600;
+        text-wrap: balance;
+      }
+
+      p {
+        color: var(--color-text-secondary);
+        text-wrap: balance;
+      }
+    }
+
+    ._image {
+      grid-area: image;
+
+      img {
+        width: auto;
+        height: var(--_height);
+      }
+    }
+  }
+</style>

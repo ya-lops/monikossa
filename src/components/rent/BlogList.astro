@@ -1,0 +1,24 @@
+---
+import BlogCard from "./partial/BlogCard.astro";
+
+import blog from "@/data/rent/blog.js";
+---
+
+
+<div class="app-blog">
+  <div class="container">
+    <div class="app-blog__inner">
+      {blog.map((post) => <BlogCard data={post} />)}
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .app-blog {
+    &__inner {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2.4rem;
+    }
+  }
+</style>

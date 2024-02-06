@@ -1,0 +1,89 @@
+---
+import Logo from "./partial/Logo.astro";
+---
+
+<footer class="app-footer">
+  <div class="container">
+    <div class="_content">
+      <Logo />
+
+      <div class="app-footer-links">
+        <ul class="_group">
+          <li>Контакты</li>
+          <li>info@rent.agency.ru</li>
+          <li>+7 (495) 123-45-67</li>
+        </ul>
+        <ul class="_group">
+          <li>Адрес</li>
+          <li>Агентство недвижимости "Рента"</li>
+          <li>123456, Москва, улица Большая Ордынка, 13/9</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="_comment">
+      <p>
+        Пожалуйста, учтите, что вся информация, представленная здесь, является
+        вымышленной, а компания "Рента" не является реальным юридическим лицом.
+        Все предназначено только для иллюстрации и не может быть использовано.
+      </p>
+      <p>
+        По вопросам использования представленного материала обращайтесь
+        lops@list.ru
+      </p>
+    </div>
+  </div>
+  <div class="app-bottom-bar">
+    <div class="container">
+      2024 &copy; Все права не защищены, потому что все выдумано
+    </div>
+  </div>
+</footer>
+
+<style lang="scss">
+  .app-footer {
+    background: var(--color-surface-1);
+
+    ._content {
+      display: grid;
+      grid-template-columns: auto minmax(0,1fr);
+      gap: 1.6rem;
+      align-items: start;
+      padding-block: 5rem;
+    }
+  }
+
+  .app-footer-links {
+    justify-self: end;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.4rem;
+
+    ._group {
+      list-style: none;
+
+      li {
+        &:first-child {
+          font-size: 2rem;
+          font-weight: 500;
+          margin-bottom: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .app-bottom-bar {
+    background: var(--color-accent);
+    color: var(--color-text-primary-inverse);
+    text-align: center;
+  }
+
+  ._comment {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    text-wrap: balance;
+    line-height: 1.15;
+    padding-block: 1.5rem;
+    width: min(100%, 500px);
+  }
+</style>

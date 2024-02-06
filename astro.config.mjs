@@ -1,4 +1,13 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+
+import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  compressHTML: true,
+  build: {
+    assets: "assets",
+    inlineStylesheets: "never",
+  },
+  integrations: [alpinejs({ entrypoint: "/src/entrypoint" })],
+});

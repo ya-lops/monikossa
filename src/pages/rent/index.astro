@@ -1,0 +1,99 @@
+---
+import Rent from "@/layouts/Rent.astro";
+
+import Header from "@/components/rent/Header.astro";
+import Hero from "@/components/rent/Hero.astro";
+import Section from "@/components/rent/Section.astro";
+import ProductList from "@/components/rent/ProductList.astro";
+import Faq from "@/components/rent/Faq.astro";
+import ZoneList from "@/components/rent/ZoneList.astro";
+import ReviewList from "@/components/rent/ReviewList.astro";
+import Footer from "@/components/rent/Footer.astro";
+
+import ButtonLink from "@/components/rent/partial/ButtonLink.astro";
+import List from "@/components/rent/partial/List.astro";
+import BlogList from "@/components/rent/BlogList.astro";
+---
+
+<Rent>
+  <Header />
+  <Hero />
+
+  <Section
+    title="Часто просматривают"
+    subtitle="Популярные"
+    actionLink="#allProducts"
+    actionLabel="Смотреть все"
+  >
+    <ProductList />
+  </Section>
+
+  <Section
+    split
+    title="Многолетний опыт"
+    subtitle="Кто мы"
+    imageOneSrc="https://bremz.ru/foto/a05aa246c05b27bc46f8a08b50c8ca9e.jpg"
+    imageTwoSrc="https://floorcarpet.ru/wp-content/uploads/3/1/a/31a6ede724fe5324cf20e5589ef702ee.jpeg"
+  >
+    <p>
+      Совершенно новый жилые комплексы с изысканными домами и стильными
+      удобствами в лучших районах Москвы и области. С нами образ жизни и
+      местоположение идеально совпадут.
+    </p>
+    <List
+      inline
+      data={[
+        "Профессионализм",
+        "Надежность",
+        "Индивидуальный подход",
+        "Широкий выбор",
+        "Страхование сделки",
+      ]}
+    />
+    <ButtonLink theme="primary" href="#aboutPage">Подробнее</ButtonLink>
+  </Section>
+
+  <Section title="Популярные районы" subtitle="В тренде">
+    <ZoneList />
+  </Section>
+
+  <Section
+    split
+    title="Хотите купить новую недвижимость или продать существующую?"
+    subtitle="Есть контакт"
+    imageOneSrc="https://scriptogenerator.ru/wp-content/uploads/2021/04/19.2-1.jpg"
+  >
+    <p>
+      Наши объекты расположены в самых престижных районах Москвы и Московской
+      области, где вы сможете наслаждаться всеми преимуществами городской жизни.
+      Не упустите свой шанс стать обладателем недвижимости вашей мечты!
+      Свяжитесь с нами прямо сейчас, чтобы получить дополнительную информацию и
+      организовать просмотр объектов.
+    </p>
+    <ButtonLink href="#contactForm" theme="primary">Связаться</ButtonLink>
+  </Section>
+
+  <Section
+    title="Что о нас говорят"
+    subtitle="Эмоции"
+    actionLink="#all"
+    actionLabel="Смотреть все"
+  >
+    <ReviewList />
+  </Section>
+
+  <Section title="Часто задаваемые вопросы" subtitle="Отвечаем">
+    <Faq />
+  </Section>
+
+  <Section
+    title="Последняя информация о недвижимости"
+    subtitle="Блог"
+    actionLink="#all"
+    actionLabel="Смотреть все"
+  >
+    <BlogList />
+  </Section>
+
+  <Footer />
+</Rent>
