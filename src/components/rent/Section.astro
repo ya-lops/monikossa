@@ -85,11 +85,15 @@ const {
     &__inner {
       display: grid;
       grid-template-columns: 100%;
-      gap: 4.8rem;
+      gap: clamp(1.6rem, 2vmin, 4.8rem);
 
       .\+split & {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        align-items: center;
+        grid-template-columns: 100%;
+
+        @media (min-width: 992px) {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          align-items: center;
+        }
       }
     }
 
@@ -97,8 +101,12 @@ const {
       display: grid;
       grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
       gap: 1.6rem;
-      min-height: 350px;
+      min-height: 150px;
       padding-right: 3.2rem;
+
+      @media (width > 768px) {
+        min-height: 350px;
+      }
 
       &:has(> :only-child) {
         grid-template-columns: minmax(0, 400px);
@@ -134,11 +142,15 @@ const {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       grid-template-areas: "subtitle action" "title action";
-      gap: 1.6rem;
+      gap: clamp(.8rem, 1.5vmin, 1.6rem);
+
+      @media (width < 576px) {
+        grid-template-areas: "subtitle action" "title title";
+      }
 
       ._title {
         grid-area: title;
-        font-size: 3.6rem;
+        font-size: clamp(2.4rem, 2vw, 3.6rem);
         line-height: 1.15;
         text-wrap: balance;
       }
@@ -149,7 +161,7 @@ const {
         align-items: center;
         gap: 1.6rem;
         color: var(--color-accent);
-        font-size: 1.8rem;
+        font-size: clamp(1.2rem, 1.5vw, 1.8rem);
         font-weight: 500;
         text-transform: uppercase;
         text-wrap: balance;

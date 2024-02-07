@@ -8,10 +8,8 @@ const data = zones
 
 
 <div class="app-popular">
-  <div class="container">
-    <div class="app-popular__inner">
-      {data.map((zone) => <SimpleCard data={zone} />)}
-    </div>
+  <div class="app-popular__inner">
+    {data.map((zone) => <div class="_item"><SimpleCard data={zone} /></div>)}
   </div>
 </div>
 
@@ -19,8 +17,13 @@ const data = zones
   .app-popular {
     &__inner {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 2.4rem;
+
+      @media (width > 992px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2.4rem;
+      }
     }
   }
 </style>

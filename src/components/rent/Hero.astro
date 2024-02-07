@@ -32,7 +32,11 @@ const data = {
 
 <style lang="scss">
   .app-hero {
-    --_height: clamp(500px, 100dvh, 800px);
+    --_height: 100%;
+
+    @media (width > 960px) {
+      --_height: clamp(500px, 100dvh, 800px);
+    }
 
     display: grid;
     grid-template-columns: 100%;
@@ -50,6 +54,12 @@ const data = {
         minmax(0, 1fr);
       grid-template-areas: ". text image image";
       height: 100%;
+
+      @media (width < 960px) {
+        grid-template-columns: 100%;
+        grid-template-areas: 'image''text';
+        grid-template-rows: 200px auto;
+      }
     }
 
     ._text {
@@ -59,9 +69,16 @@ const data = {
       grid-area: text;
       align-self: center;
 
+      @media (width < 960px) {
+        padding-block: 3.2rem;
+        padding-inline: 1.6rem;
+        max-width: var(--container-max-width);
+        justify-self: center;
+      }
+
       h1 {
         color: var(--color-text-primary);
-        font-size: 5.6rem;
+        font-size: clamp(3.2rem, 2vmin, 5.6rem);
         line-height: 1.15;
         font-weight: 600;
         text-wrap: balance;
@@ -77,8 +94,16 @@ const data = {
       grid-area: image;
 
       img {
-        width: auto;
-        height: var(--_height);
+        @media (width < 960px) {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        @media (width > 960px) {
+          width: auto;
+          height: var(--_height);
+        }
       }
     }
   }

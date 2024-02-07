@@ -11,13 +11,15 @@ import Nav from "./partial/Nav.astro";
         <Logo />
       </a>
 
-      <div class="_nav">
-        <Nav />
-      </div>
-
-      <div class="_actions">
-        <ButtonLink href="" theme="ghost">Вход</ButtonLink>
-        <ButtonLink href="" theme="primary">Регистрация</ButtonLink>
+      <div class="+hide-on-sm">
+        <div class="_nav">
+          <Nav />
+        </div>
+  
+        <div class="_actions">
+          <ButtonLink href="" theme="ghost">Вход</ButtonLink>
+          <ButtonLink href="" theme="primary">Регистрация</ButtonLink>
+        </div>
       </div>
     </div>
   </div>
@@ -46,6 +48,12 @@ import Nav from "./partial/Nav.astro";
       grid-template-columns: auto minmax(0, 1fr) auto;
       align-items: center;
       padding-block: 2rem;
+    }
+
+    .\+hide-on-sm {
+      @media (width < 960px) {
+        display: none;
+      }
     }
 
     ._logo {

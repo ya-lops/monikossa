@@ -7,19 +7,46 @@ const data = objects;
 ---
 
 <div class="app-products">
-  <div class="container">
-    <div class="app-products__inner">
-      {data.map((product) => <ProductCard data={product} />)}
-    </div>
+  <div class="app-products__inner">
+    {data.map((product) => <div class="_item"><ProductCard data={product} /></div>)}
   </div>
 </div>
 
 <style lang="scss">
   .app-products {
+    width: 100%;
+
     &__inner {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 2.4rem;
+
+      @media (width < 576px) {
+        grid-auto-columns: max(280px, 80%);
+        grid-auto-flow: column;
+        padding-bottom: .4rem;
+        margin-inline: calc(-1 * var(--padding-inline));
+        padding-inline: var(--padding-inline);
+        scroll-padding-inline: calc(2 * var(--padding-inline));
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        ._item {
+          scroll-snap-align: start;
+        }
+      }
+
+      @media (width > 576px) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+
+      @media (width > 960px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2.4rem;
+      }
     }
   }
 </style>
