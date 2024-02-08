@@ -21,7 +21,7 @@ const data = {
     <div class="_text">
       <h1 class="_title">{data.title}</h1>
       <p>{data.text}</p>
-      <ButtonLink href="#test-lesson" theme="primary">Начать</ButtonLink>
+      <ButtonLink href="#test-lesson" theme="primary">Бесплатный урок</ButtonLink>
 
       <p class="_message">Спешите! Количество мест ограничено.</p>
     </div>
@@ -104,7 +104,16 @@ const data = {
       grid-area: image;
 
       img {
-        filter: drop-shadow(42px 0 0 #fe52523d) drop-shadow(84px 0 0 #fe525221);
+        // filter: drop-shadow(0 0 0 #fe52523d) drop-shadow(0 0 0 #fe525221);
+        // transition: .25s;
+        animation: shadowin forwards;
+        animation-delay: .33s;
+        animation-duration: 1.5s;
+
+        @keyframes shadowin {
+          from {filter: drop-shadow(0 0 0 #fe52523d) drop-shadow(0 0 0 #fe525221);}
+          to {filter: drop-shadow(42px 0 0 #fe52523d) drop-shadow(84px 0 0 #fe525221);}
+        }
 
         @media (width < 960px) {
           width: 100%;
