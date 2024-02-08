@@ -51,7 +51,13 @@ const {
       <div class="_splitwrap">
         <header class="app-section__header">
           <h2 class="_title" set:html={title} />
-          {subtitle && <h4 class="_subtitle" set:html={subtitle} />}
+          {
+            subtitle && (
+              <h4 class="_subtitle">
+                <div set:html={subtitle} />
+              </h4>
+            )
+          }
           {
             !split && (
               <div class="_action">
@@ -166,11 +172,17 @@ const {
         text-transform: uppercase;
         text-wrap: balance;
 
-        &::before {
-          content: "";
-          width: 3.5rem;
-          height: 2px;
-          background: currentColor;
+        div {
+          transform-origin: 5% 50%; // experimental
+          scale: 12; // experimental
+          opacity: 0.055; // experimental
+          
+          &::before {
+            content: "";
+            width: 3.5rem;
+            height: 2px;
+            background: currentColor;
+          }
         }
       }
 
