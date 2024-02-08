@@ -1,0 +1,30 @@
+---
+import tariffs from "@/data/elearn/price";
+
+import PriceCard from "./partial/PriceCard.astro";
+
+const data = tariffs;
+---
+
+<div class="app-pricing">
+  <div class="app-pricing__inner">
+    {data.map((tariff) => <PriceCard data={tariff} />)}
+  </div>
+</div>
+
+<style lang="scss">
+  .app-pricing {
+    width: 100%;
+    
+    &__inner {
+      display: grid;
+      // grid-auto-flow: column dense;
+      gap: 2.4rem;
+
+      @media (width > 992px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2.4rem;
+      }
+    }
+  }
+</style>

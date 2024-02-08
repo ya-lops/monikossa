@@ -1,0 +1,58 @@
+---
+interface Props {
+  size?: "s" | "m" | "l";
+  title?: string;
+  theme?: "ghost" | "default" | "primary";
+  href: string;
+  classes?: string;
+}
+
+const { size = "m", title, theme = "default", href, classes, ...rest } = Astro.props;
+---
+
+<a href={href} class:list={["app-btn-link", {'+ghost': theme=="ghost"}, {'+primary': theme=="primary"}, {'+s': size=="s"}, {'+l': size=="l"}, {classes}]} {...rest}>
+  <slot/>
+</a>
+
+<style lang="scss">
+  .app-btn-link {
+    display: inline-flex;
+    flex-shrink: 0;
+    padding: var(--_pads, .625em 1.25em);
+    border-radius: 8px;
+    border: 1px solid var(--_border-color, transparent);
+    background: var(--_bg, transparent);
+    color: var(--_color, var(--color-text-primary));
+    font-size: var(--_fz, 1.6rem);
+    text-decoration: none;
+    user-select: none;
+    outline: none;
+
+    &:hover {
+      background: var(--_bg-hover, var(--color-accent));
+      color: var(--_color-hover, var(--color-text-primary-inverse));
+    }
+
+    &.\+s {
+      
+    }
+
+    &.\+l {
+
+    }
+
+    &.\+ghost {
+      --_bg: transparent;
+      --_bg-hover: var(--color-accent);
+      --_color: var(--color-text-primary);
+      --_color-hover: var(--color-text-primary-inverse);
+    }
+
+    &.\+primary {
+      --_bg: var(--color-accent);
+      --_bg-hover: var(--color-accent-dark);
+      --_color: var(--color-text-primary-inverse);
+      --_color-hover: var(--color-text-primary-inverse);
+    }
+  }
+</style>

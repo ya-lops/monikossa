@@ -1,0 +1,73 @@
+---
+import ButtonLink from "./ButtonLink.astro";
+
+const { data } = Astro.props;
+---
+
+<article class="app-blog-card">
+  <div class="_image">
+    <img src={data.image} loading="lazy"/>
+  </div>
+  <div class="_info">
+    <div class="_date">{data.date}</div>
+    <h3 class="_name">{data.name}</h3>
+  </div>
+  <div class="_action">
+    <ButtonLink href="#blog-single" theme="primary">Подробнее</ButtonLink>
+  </div>
+</article>
+
+<style lang="scss">
+  .app-blog-card {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto minmax(0,1fr) auto;
+    align-content: start;
+    align-items: start;
+    border-radius: 1.6rem;
+    color: var(--color-text-secondary);
+
+    ._image {
+      aspect-ratio: 42/28;
+      border-radius: 1.6rem;
+      overflow: clip;
+
+      @media (width < 992px) {
+        aspect-ratio: 16/4;
+      }
+
+      @media (width < 768px) {
+        aspect-ratio: 16/8;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: scale .33s;
+        will-change: scale;
+      }
+    }
+
+    &:hover {
+      background: var(--color-surface-1);
+      box-shadow: 0 0 0 1.2rem var(--color-surface-1);
+    }
+
+    &:hover ._image img {
+      scale: 1.05;
+    }
+
+    ._info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem 2.4rem;
+      padding-block: 1.6rem;
+    }
+
+    ._name {
+      width: 100%;
+      color: var(--color-text-primary);
+    }
+  }
+</style>

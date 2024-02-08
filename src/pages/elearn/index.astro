@@ -1,0 +1,70 @@
+---
+import Elearn from "@/layouts/Elearn.astro";
+
+import Hero from "@/components/elearn/Hero.astro";
+import Header from "@/components/elearn/Header.astro";
+import Faq from "@/components/elearn/Faq.astro";
+import Section from "@/components/elearn/Section.astro";
+import Footer from "@/components/elearn/Footer.astro";
+import Pricing from "@/components/elearn/Pricing.astro";
+import PersonList from "@/components/elearn/PersonList.astro";
+import Features from "@/components/elearn/Features.astro";
+import Review from "@/components/elearn/ReviewList.astro";
+---
+
+<Elearn>
+  <Header />
+
+  <Hero />
+
+  <!-- Section > Banner | Short about -->
+  <Section title="баннер"></Section>
+
+  <!-- Section > How it works -->
+  <Section title="как работает"></Section>
+
+  <!-- Section > Workflow -->
+  <Section title="воркфлоу"></Section>
+
+  <!-- Section > Banner | Discount -->
+  <Section title="баннер с дисконтом"></Section>
+
+  <Section
+    title="Наши учителя – <mark>друзья,</mark> с которыми легко найти английский язык"
+    subtitle="Учителя"
+  >
+    <PersonList/>
+  </Section>
+
+  <Section
+    title="Научитесь говорить и думать на английском от <mark>599₽</mark>"
+    subtitle="Цены"
+  >
+    <Pricing />
+  </Section>
+
+  <Section title="<mark>Бонусы</mark> к каждому абонементу">
+    <Features/>
+  </Section>
+
+  <Section title="Часто задаваемый вопросы" subtitle="Вопрос/Ответ">
+    <Faq />
+  </Section>
+
+  <Section
+    title="Более 3000 наших учеников говорят на английском"
+    subtitle="Отзывы"
+  >
+    <Review/>
+  </Section>
+
+  <!-- Section > CTA -->
+  <Footer />
+</Elearn>
+
+<style is:global>
+  mark {
+    color: var(--color-accent);
+    background: none;
+  }
+</style>

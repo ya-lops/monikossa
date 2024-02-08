@@ -1,0 +1,107 @@
+
+<!doctype html>
+<html lang="ru" class="app-elearn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The System - онлайн школа английского языка</title>
+  </head>
+  <body class="">
+    <slot />
+  </body>
+</html>
+
+<style lang="scss" is:global>
+  :root {
+    --color-accent: #fe5252;
+    --color-surface-0: #fcfcfd;
+    --color-surface-0-light: #fff;
+    --color-surface-1: color-mix(in oklab, var(--color-accent), #fff 95%);
+    --color-accent-dark: color-mix(in oklab, var(--color-accent), #000 5%);
+    --color-accent-darker: color-mix(in oklab, var(--color-accent), #000 10%);
+    --color-accent-light: color-mix(in oklab, var(--color-accent), #fff 5%);
+    --color-accent-lighter: color-mix(in oklab, var(--color-accent), #fff 10%);
+    --color-text-accent: var(--color-accent);
+    --color-text-primary: #212529;
+    --color-text-primary-inverse: #fff;
+    --color-text-secondary: color-mix(
+      in oklab,
+      var(--color-text-primary),
+      #fff 10%
+    );
+    --color-line: #f2f4f7;
+    --color-line-light: color-mix(in oklab, var(--color-line), #fff 5%);
+    --color-line-accent: var(--color-accent);
+    --padding-inline: 1.6rem;
+    --font-family-primary: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    --font-family-secondary: ;
+    --shadow-1: 0px 4px 30px 0px rgba(0, 0, 0, 0.05);
+    --shadow-2: 0 0 22px rgba(0, 0, 0, 0.075);
+    --shadow-3: 0px 6px 30px rgba(0, 0, 0, 0.06);
+
+    @media (min-width: 576px) {
+      --container-max-width: 540px;
+    }
+
+    @media (min-width: 768px) {
+      --container-max-width: 720px;
+    }
+
+    @media (min-width: 992px) {
+      --container-max-width: 960px;
+    }
+
+    @media (min-width: 1200px) {
+      --container-max-width: 1140px;
+    }
+
+    @media (min-width: 1400px) {
+      --container-max-width: 1320px;
+    }
+  }
+
+  .app-elearn {
+    font-size: 62.5%;
+    view-timeline: --app;
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    body {
+      background-color: var(--color-surface-0-light);
+      color: var(--color-text-primary);
+      font-size: 1rem;
+      font-family: var(--font-family-primary);
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-family-primary);
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 2.7rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max-width, auto);
+      margin-inline: auto;
+      padding-inline: var(--padding-inline, 0.75rem);
+    }
+  }
+</style>

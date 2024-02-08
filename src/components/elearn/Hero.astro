@@ -1,0 +1,136 @@
+---
+interface Hero {
+  title: string;
+  text: string;
+  image: string;
+}
+
+import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
+
+const { title, text, image, classes, ...rest } = Astro.props;
+
+const data = {
+  title: "Научим говорить и думать на английском",
+  text: "Уроки разговорного английского по 30 минут без домашних заданий от нулевого уровня",
+  imageLink: "/images/elearn/author.png",
+};
+---
+
+<section class:list={["app-hero", { classes }, { ...rest }]}>
+  <div class="app-hero__inner">
+    <div class="_text">
+      <h1 class="_title">{data.title}</h1>
+      <p>{data.text}</p>
+      <ButtonLink href="#test-lesson" theme="primary">Начать</ButtonLink>
+
+      <p class="_message">Спешите! Количество мест ограничено.</p>
+    </div>
+    <div class="_image">
+      <img src={data.imageLink} alt="" loading="lazy" />
+      <aside class="_image-description">
+        <h5>Александр Фомин</h5>
+        <p>Автор системы, основанной на прямом Методе изучения</p>
+        <p>
+          Полиглот, владеет 4 языками: английский, итальянский, французский,
+          иврит
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .app-hero {
+    --_height: 100%;
+
+    @media (width > 960px) {
+      --_height: clamp(500px, 100dvh, 800px);
+    }
+
+    display: grid;
+    grid-template-columns: 100%;
+    height: var(--_height);
+    background: var(--color-surface-1);
+    overflow: clip;
+
+    &__inner {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1fr) repeat(
+          2,
+          minmax(0, calc(var(--container-max-width) / 2))
+        )
+        minmax(0, 1fr);
+      grid-template-areas: ". text image image";
+      height: 100%;
+
+      @media (width < 960px) {
+        grid-template-columns: 100%;
+        grid-template-areas: "image" "text";
+        grid-template-rows: 200px auto;
+      }
+    }
+
+    ._text {
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+      gap: 2.4rem;
+      grid-area: text;
+      align-self: center;
+
+      @media (width < 960px) {
+        padding-block: 3.2rem;
+        padding-inline: 1.6rem;
+        max-width: var(--container-max-width);
+        justify-self: center;
+      }
+
+      h1 {
+        color: var(--color-text-primary);
+        font-size: clamp(3.2rem, 7vmin, 7.2rem);
+        line-height: 1.15;
+        font-weight: 700;
+        text-wrap: balance;
+      }
+
+      p {
+        color: var(--color-text-secondary);
+        text-wrap: balance;
+      }
+    }
+
+    ._image {
+      grid-area: image;
+
+      img {
+        filter: drop-shadow(42px 0 0 #fe52523d) drop-shadow(84px 0 0 #fe525221);
+
+        @media (width < 960px) {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        @media (width > 960px) {
+          width: auto;
+          height: var(--_height);
+        }
+      }
+    }
+    
+    ._image-description {
+      position: absolute;
+      right: 10%;
+      bottom: 10%;
+      background: rgba(255, 255, 255, .5);
+      padding: .8rem;
+      box-shadow: -24px 0 0 rgba(255, 255, 255, .25);
+
+      h5 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+</style>

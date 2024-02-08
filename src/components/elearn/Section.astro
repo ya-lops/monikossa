@@ -1,7 +1,7 @@
 ---
 interface Props {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   actionLink?: string;
   actionLabel?: string;
   split?: boolean;
@@ -37,12 +37,12 @@ const {
           <div class="app-section__images _images">
             {imageOneSrc && (
               <div class="_imageOne">
-                <img src={imageOneSrc} alt="" loading="lazy"/>
+                <img src={imageOneSrc} alt="" loading="lazy" />
               </div>
             )}
             {imageTwoSrc && (
               <div class="_imageTwo">
-                <img src={imageTwoSrc} alt="" loading="lazy"/>
+                <img src={imageTwoSrc} alt="" loading="lazy" />
               </div>
             )}
           </div>
@@ -50,8 +50,8 @@ const {
       }
       <div class="_splitwrap">
         <header class="app-section__header">
-          <h2 class="_title" set:html={title}></h2>
-          <h4 class="_subtitle">{subtitle}</h4>
+          <h2 class="_title" set:html={title} />
+          {subtitle && <h4 class="_subtitle" set:html={subtitle} />}
           {
             !split && (
               <div class="_action">
@@ -142,7 +142,7 @@ const {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       grid-template-areas: "subtitle action" "title action";
-      gap: clamp(.8rem, 1.5vmin, 1.6rem);
+      gap: clamp(0.8rem, 1.5vmin, 1.6rem);
 
       @media (width < 576px) {
         grid-template-areas: "subtitle action" "title title";
