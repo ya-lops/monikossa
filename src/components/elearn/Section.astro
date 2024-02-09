@@ -190,8 +190,12 @@ const {
 
         div {
           transform-origin: 5% 50%; // experimental
-          scale: 12; // experimental
+          scale: 7.5; // experimental
           opacity: 0.035; // experimental
+
+          @media (width > 960px) {
+            scale: 12;
+          }
 
           &::before {
             content: "";

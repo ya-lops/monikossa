@@ -21,40 +21,19 @@ import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
 
   <Hero />
 
-  <!-- Section > Banner | Short about -->
   <Section
     centeredTitle
     subtitle="The System"
     title="<mark>Метод The System</mark> – система быстрого погружения в английский язык через разговорную практику"
   />
 
-  <!-- Section > How it works -->
   <Section
     id="how-it-works"
     title="Как работает метод – рассказывает <mark>Александр Фомин</mark>"
   >
     <Split>
       <Fragment slot="start">
-        <div class="+frame">
-          <iframe
-            style="aspect-ratio: 16/9;"
-            width="100%"
-            height="288"
-            src="https://www.youtube.com/embed/lMGQCL4qIPg"
-            title="Говорить и думать на иностранном? Легко!"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        </div>
-        <div class="+frame">
-          <iframe
-            style="aspect-ratio: 16/9;"
-            width="100%"
-            height="288"
-            src="https://www.youtube.com/embed/JJcFshIEURE"
-            title="Our students about the method and their English studies"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        </div>
+ 
       </Fragment>
       <Fragment slot="end">
         <HowItWorks />
@@ -62,21 +41,21 @@ import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
     </Split>
   </Section>
 
+  <!-- Блок 2 - Как работает метод -->
   <Section
     centeredTitle
     subtitle="The System"
     title="<span>По нашему методу <mark>изучить английский язык</mark> смогут студенты любого уровня – от 0 до С1</span>"
   />
 
+  <!-- Блок 3 - Как проходит пробное занятие и что в него входит -->
   <Section
     centeredTitle
     title="Занятие проходит <mark>онлайн в режиме диалога</mark> с преподавателем"
   >
     <Split>
       <Fragment slot="end">
-        <div class="+frame" style="width: 300px">
-          <img src="/images/elearn/talk_01.gif" alt="" loading="lazy" />
-        </div>
+
       </Fragment>
       <Fragment slot="start">
         <WorkFlow />
@@ -84,6 +63,8 @@ import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
     </Split>
   </Section>
 
+  <!-- Блок 4 - Как проходит пробное занятие и что в него входит -->
+  <!-- Но тут совершенно другое -->
   <Section
     centeredTitle
     title="Запишитесь на <mark>бесплатный пробный урок</mark> и получите скидку до 55%"
@@ -96,6 +77,7 @@ import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
     >
   </Section>
 
+  <!-- Блок 5 - Наши преподаватели -->
   <Section
     id="teachers"
     title="Наши учителя – <mark>друзья,</mark> с которыми легко найти английский язык"
@@ -104,6 +86,7 @@ import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
     <PersonList />
   </Section>
 
+  <!-- Блок 6 - Отзывы наших учеников  -->
   <Section
     id="pricing"
     title="Научитесь говорить и думать на английском от <mark>599₽</mark>"
@@ -116,10 +99,7 @@ import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
     <Features />
   </Section>
 
-  <Section id="faq" title="Часто задаваемые вопросы" subtitle="Вопросы">
-    <Faq />
-  </Section>
-
+  <!-- Блок 7 - Отзывы наших учеников  -->
   <Section
     title="Более <mark>3000</mark> наших учеников говорят на английском"
     subtitle="Отзывы"
@@ -127,6 +107,7 @@ import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
     <Review />
   </Section>
 
+  <!-- Блок 8 - Приглашение на пробный урок -->
   <Section
     subtitle="Начни сегодня"
     title="Запишитесь на <mark>бесплатный пробный урок</mark> и получите скидку до 55%"
@@ -137,6 +118,11 @@ import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
       href="#get-free-lesson-form"
       theme="ghost">Записаться на пробный урок</ButtonLink
     >
+  </Section>
+
+  <!-- Блок 9 - блок ответов на вопросы -->
+  <Section id="faq" title="Часто задаваемые вопросы" subtitle="Вопросы">
+    <Faq />
   </Section>
 
   <Footer />
