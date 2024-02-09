@@ -33,7 +33,7 @@ import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
   >
     <Split>
       <Fragment slot="start">
- 
+        <img src="/images/elearn/logo_no-text.svg" />
       </Fragment>
       <Fragment slot="end">
         <HowItWorks />
@@ -53,14 +53,7 @@ import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
     centeredTitle
     title="Занятие проходит <mark>онлайн в режиме диалога</mark> с преподавателем"
   >
-    <Split>
-      <Fragment slot="end">
-
-      </Fragment>
-      <Fragment slot="start">
-        <WorkFlow />
-      </Fragment>
-    </Split>
+    <WorkFlow />
   </Section>
 
   <!-- Блок 4 - Как проходит пробное занятие и что в него входит -->
@@ -84,6 +77,16 @@ import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
     subtitle="Учителя"
   >
     <PersonList />
+    <hr />
+
+    <div class="_free-lesson">
+      <h3><mark>Бесплатный вводный урок — с учителем</mark></h3>
+      <p>
+        Вводный урок проведет ваш будущий преподаватель, а не менеджер по
+        продажам или методист. Вы познакомитесь с учителем еще до оплаты
+        занятий.
+      </p>
+    </div>
   </Section>
 
   <!-- Блок 6 - Отзывы наших учеников  -->
@@ -148,8 +151,8 @@ import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
     isolation: isolate;
 
     &::after {
-      content: '';
-      position:absolute;
+      content: "";
+      position: absolute;
       inset: 0;
       background: var(--color-accent);
       transform: rotate(1deg) skewX(2deg);
@@ -158,11 +161,32 @@ import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
     }
 
     & + &::after {
-      transform: rotate(-.5deg) skewX(-2.71deg);
+      transform: rotate(-0.5deg) skewX(-2.71deg);
     }
 
     & + & + &::after {
       transform: rotate(-1.5deg) skewX(-1.71deg);
     }
+  }
+
+  ._free-lesson {
+    text-wrap: balance;
+    line-height: 1.5;
+
+    h3 {
+      font-family: var(--font-family-secondary);
+      font-size: 3.2rem;
+    }
+
+    p {
+      font-size: 2.4rem;
+    }
+  }
+
+  hr {
+    width: 100%;
+    border: 0;
+    height: 2px;
+    background: var(--color-accent);
   }
 </style>

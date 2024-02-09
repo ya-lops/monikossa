@@ -14,10 +14,14 @@
 <style lang="scss">
   .app-split {
     display: grid;
-    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    grid-template-columns: minmax(0,1fr);
     align-items: center;
     gap: 6.4rem;
     width: 100%;
+
+    @media (width > 960px) {
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    }
 
     > div {
       display: flex;
