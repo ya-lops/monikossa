@@ -24,12 +24,12 @@ const { data } = Astro.props;
     grid-template-rows: auto minmax(0,1fr) auto;
     align-content: start;
     align-items: start;
-    // border-radius: 1.6rem;
+    border-radius: var(--radius-3);
     color: var(--color-text-secondary);
 
     ._image {
       aspect-ratio: 42/28;
-      // border-radius: 1.6rem;
+      border-radius: var(--radius-3);
       overflow: clip;
 
       @media (width < 992px) {

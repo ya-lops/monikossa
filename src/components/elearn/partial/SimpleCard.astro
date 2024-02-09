@@ -14,13 +14,13 @@ const { data } = Astro.props;
     display: grid;
     grid-template-columns: 100%;
     grid-template-areas: "c";
-    // border-radius: 1.6rem;
+    border-radius: var(--radius-3);
 
     ._image {
       grid-area: c;
       aspect-ratio: 16/9;
       filter: brightness(0.75);
-      // border-radius: 1.6rem;
+      border-radius: var(--radius-3);
       overflow: clip;
 
       img {
