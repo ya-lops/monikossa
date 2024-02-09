@@ -3,7 +3,7 @@ const { data } = Astro.props;
 ---
 
 <article class="app-person-card">
-  <div class="_image">
+  <div class="_image +frame">
     <img src={data.image} loading="lazy"/>
   </div>
   <div class="_info">
@@ -23,13 +23,13 @@ const { data } = Astro.props;
     grid-template-rows: auto minmax(0,1fr) auto;
     align-content: start;
     align-items: start;
-    border-radius: 1.6rem;
+    // border-radius: 1.6rem;
     color: var(--color-text-secondary);
 
     ._image {
       aspect-ratio: 42/28;
-      border-radius: 1.6rem;
-      overflow: clip;
+      // border-radius: 1.6rem;
+      // overflow: clip;
 
       @media (width < 992px) {
         aspect-ratio: 16/4;

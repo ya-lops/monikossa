@@ -21,9 +21,9 @@ const data = {
     <div class="_text">
       <h1 class="_title">{data.title}</h1>
       <p>{data.text}</p>
-      <ButtonLink href="#test-lesson" theme="primary">Бесплатный урок</ButtonLink>
+      <ButtonLink href="#test-lesson" size="l" theme="ghost">Бесплатный урок</ButtonLink>
 
-      <p class="_message">Спешите! Количество мест ограничено.</p>
+      <p class="_message">Ты можешь сделать это уже сегодня!</p>
     </div>
     <div class="_image">
       <img src={data.imageLink} alt="" loading="lazy" />
@@ -90,22 +90,27 @@ const data = {
         color: var(--color-text-primary);
         font-size: clamp(3.2rem, 7vmin, 7.2rem);
         line-height: 1.15;
-        font-weight: 700;
+        font-weight: 600;
         text-wrap: balance;
+        font-family: var(--font-family-secondary);
       }
 
       p {
         color: var(--color-text-secondary);
         text-wrap: balance;
       }
+
+      ._message {
+        font-family: var(--font-family-secondary);
+        font-size: 2.4rem;
+      }
     }
 
     ._image {
+      position: relative;
       grid-area: image;
 
       img {
-        // filter: drop-shadow(0 0 0 #fe52523d) drop-shadow(0 0 0 #fe525221);
-        // transition: .25s;
         animation: shadowin forwards;
         animation-delay: .33s;
         animation-duration: 1.5s;
@@ -130,14 +135,16 @@ const data = {
     
     ._image-description {
       position: absolute;
-      right: 10%;
+      left: 10%;
       bottom: 10%;
       background: rgba(255, 255, 255, .5);
       padding: .8rem;
       box-shadow: -24px 0 0 rgba(255, 255, 255, .25);
+      backdrop-filter: blur(5px);
 
       h5 {
         font-size: 3rem;
+        font-family: var(--font-family-secondary);
         margin-bottom: 1rem;
       }
     }

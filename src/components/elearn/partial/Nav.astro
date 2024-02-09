@@ -4,19 +4,19 @@ const baseUrl = "/elearn/";
 const links = [
   {
     label: "Как работает",
-    href: baseUrl,
+    href: baseUrl + "#how-it-works",
   },
   {
     label: "Учителя",
-    href: baseUrl,
+    href: baseUrl + "#teachers",
   },
   {
     label: "Вопросы",
-    href: baseUrl + "#contacts",
+    href: baseUrl + "#faq",
   },
   {
     label: "Цены",
-    href: baseUrl + "#contacts",
+    href: baseUrl + "#pricing",
   },
 ];
 ---
@@ -25,22 +25,11 @@ const links = [
   <ul class="_list">
     {
       links.map((link) => (
-        <li class:list={["_item", { "+hasSubmenu": link.submenu }]}>
+        <li class:list={["_item"]}>
           <a href={link.href} class="_link">
             <span>{link.label}</span>
-            {!!link.submenu && '⬇️'}
+            
           </a>
-          {!!link.submenu && (
-            <ul class="_list +submenu">
-              {link.submenu.map((link) => (
-                <li class="_item">
-                  <a href={link.href} class="_link">
-                    <span>{link.label}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
         </li>
       ))
     }
@@ -56,52 +45,6 @@ const links = [
       gap: 3.2rem;
       padding: 0;
       background: var(--color-surface-0-light);
-
-      &.\+submenu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: max-content;
-        height: max-content;
-      }
-    }
-
-    ._item {
-      &.\+hasSubmenu {
-        position: relative;
-
-        &:hover .\+submenu {
-          display: flex;
-          flex-flow: column;
-          align-items: stretch;
-          gap: 0;
-          min-width: 200px;
-          border-radius: 8px;
-          border-top: 3px solid var(--color-accent);
-          box-shadow: var(--shadow-1);
-          animation: showSlideDown .25s forwards;
-
-          @keyframes showSlideDown {
-            from {
-              opacity: 0;
-              translate: 0 -10px;
-            }
-            to {
-              opacity: 1;
-              translate: 0 0;
-            }
-          }
-
-          ._item {
-            padding: 10px;
-
-            &:not(:last-child) {
-              border-bottom: 2px dotted var(--color-line);
-            }
-          }
-        }
-      }
     }
 
     ._link {
@@ -113,10 +56,6 @@ const links = [
       &:hover {
         color: var(--color-text-accent);
       }
-    }
-
-    .\+submenu ._link {
-      font-size: 1.4rem;
     }
   }
 </style>

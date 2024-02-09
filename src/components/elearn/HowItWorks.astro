@@ -1,0 +1,59 @@
+---
+const how = [
+  {
+    name: "100% практики",
+    text: "Каждый урок - это 30 минут разговорной практики, где 50% – вы слушаете вопросы, 50% – отвечаете на них.",
+  },
+  {
+    name: "Динамика и скорость",
+    text: "Преподаватель создает динамику, чтобы вы умели легко воспринимать речь на слух и максимально много говорили на английском.",
+  },
+  {
+    name: "Помощь ученику",
+    text: "Задача преподавателя - помогать с ответом и аккуратно подталкивать, чтобы не было долгих пауз, и мозг не переключался на родной язык.",
+  },
+  {
+    name: "Выверенная программа обучения",
+    text: "Программа формирует навык говорения и включает всю базовую лексику и грамматику",
+  },
+  {
+    name: "Материал урока",
+    text: "70% - доводим изученный материал до автоматизма.<br> 30% - изучаем новый материал",
+  },
+];
+
+const data = how;
+---
+
+<ul class="app-how-list">
+  {
+    data.map((item) => (
+      <li class="_item">
+        <div class="_name">{item.name}</div>
+        <div class="_text" set:html={item.text} />
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  .app-how-list {
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+    gap: 2.4rem;
+
+    ._name {
+      font-size: 3.2rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+      font-family: var(--font-family-secondary);
+    }
+
+    ._text {
+      line-height: 1.5;
+      text-wrap: balance;
+    }
+  }
+</style>

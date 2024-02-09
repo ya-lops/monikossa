@@ -10,6 +10,10 @@ import Pricing from "@/components/elearn/Pricing.astro";
 import PersonList from "@/components/elearn/PersonList.astro";
 import Features from "@/components/elearn/Features.astro";
 import Review from "@/components/elearn/ReviewList.astro";
+import Split from "@/components/elearn/partial/Split.astro";
+import HowItWorks from "@/components/elearn/HowItWorks.astro";
+import WorkFlow from "@/components/elearn/WorkFlow.astro";
+import ButtonLink from "@/components/elearn/partial/ButtonLink.astro";
 ---
 
 <Elearn>
@@ -18,25 +22,90 @@ import Review from "@/components/elearn/ReviewList.astro";
   <Hero />
 
   <!-- Section > Banner | Short about -->
-  <Section title="баннер"></Section>
+  <Section
+    centeredTitle
+    subtitle="The System"
+    title="<mark>Метод The System</mark> – система быстрого погружения в английский язык через разговорную практику"
+  />
 
   <!-- Section > How it works -->
-  <Section title="как работает"></Section>
-
-  <!-- Section > Workflow -->
-  <Section title="воркфлоу"></Section>
-
-  <!-- Section > Banner | Discount -->
-  <Section title="баннер с дисконтом"></Section>
-
   <Section
-    title="Наши учителя – <mark>друзья,</mark> с которыми легко найти английский язык"
-    subtitle="Учителя"
+    id="how-it-works"
+    title="Как работает метод – рассказывает <mark>Александр Фомин</mark>"
   >
-    <PersonList/>
+    <Split>
+      <Fragment slot="start">
+        <div class="+frame">
+          <iframe
+            style="aspect-ratio: 16/9;"
+            width="100%"
+            height="288"
+            src="https://www.youtube.com/embed/lMGQCL4qIPg"
+            title="Говорить и думать на иностранном? Легко!"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+        <div class="+frame">
+          <iframe
+            style="aspect-ratio: 16/9;"
+            width="100%"
+            height="288"
+            src="https://www.youtube.com/embed/JJcFshIEURE"
+            title="Our students about the method and their English studies"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </Fragment>
+      <Fragment slot="end">
+        <HowItWorks />
+      </Fragment>
+    </Split>
   </Section>
 
   <Section
+    centeredTitle
+    subtitle="The System"
+    title="<span>По нашему методу <mark>изучить английский язык</mark> смогут студенты любого уровня – от 0 до С1</span>"
+  />
+
+  <Section
+    centeredTitle
+    title="Занятие проходит <mark>онлайн в режиме диалога</mark> с преподавателем"
+  >
+    <Split>
+      <Fragment slot="end">
+        <div class="+frame" style="width: 300px">
+          <img src="/images/elearn/talk_01.gif" alt="" loading="lazy" />
+        </div>
+      </Fragment>
+      <Fragment slot="start">
+        <WorkFlow />
+      </Fragment>
+    </Split>
+  </Section>
+
+  <Section
+    centeredTitle
+    title="Запишитесь на <mark>бесплатный пробный урок</mark> и получите скидку до 55%"
+  >
+    <ButtonLink
+      classes="+centered"
+      size="l"
+      href="#get-free-lesson-form"
+      theme="ghost">Записаться на пробный урок</ButtonLink
+    >
+  </Section>
+
+  <Section
+    id="teachers"
+    title="Наши учителя – <mark>друзья,</mark> с которыми легко найти английский язык"
+    subtitle="Учителя"
+  >
+    <PersonList />
+  </Section>
+
+  <Section
+    id="pricing"
     title="Научитесь говорить и думать на английском от <mark>599₽</mark>"
     subtitle="Цены"
   >
@@ -44,10 +113,10 @@ import Review from "@/components/elearn/ReviewList.astro";
   </Section>
 
   <Section title="<mark>Бонусы</mark> к каждому абонементу">
-    <Features/>
+    <Features />
   </Section>
 
-  <Section title="Часто задаваемые вопросы" subtitle="Вопросы">
+  <Section id="faq" title="Часто задаваемые вопросы" subtitle="Вопросы">
     <Faq />
   </Section>
 
@@ -55,10 +124,21 @@ import Review from "@/components/elearn/ReviewList.astro";
     title="Более <mark>3000</mark> наших учеников говорят на английском"
     subtitle="Отзывы"
   >
-    <Review/>
+    <Review />
   </Section>
 
-  <!-- Section > CTA -->
+  <Section
+    subtitle="Начни сегодня"
+    title="Запишитесь на <mark>бесплатный пробный урок</mark> и получите скидку до 55%"
+  >
+    <ButtonLink
+      classes="+centered"
+      size="l"
+      href="#get-free-lesson-form"
+      theme="ghost">Записаться на пробный урок</ButtonLink
+    >
+  </Section>
+
   <Footer />
 </Elearn>
 
@@ -66,5 +146,36 @@ import Review from "@/components/elearn/ReviewList.astro";
   mark {
     color: var(--color-accent);
     background: none;
+  }
+
+  .\+centered {
+    margin-inline: auto;
+  }
+
+  img {
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .\+frame {
+    position: relative;
+    isolation: isolate;
+
+    &::after {
+      content: '';
+      position:absolute;
+      inset: 0;
+      background: var(--color-accent);
+      transform: rotate(1deg) skewX(2deg);
+      z-index: -1;
+    }
+
+    & + &::after {
+      transform: rotate(-.5deg) skewX(-2.71deg);
+    }
+
+    & + & + &::after {
+      transform: rotate(-1.5deg) skewX(-1.71deg);
+    }
   }
 </style>

@@ -16,7 +16,7 @@ import ButtonLink from "./ButtonLink.astro";
   <ul class="_features-list">
     <li>Количество: {data.amount} уроков</li>
     <li>Срок действия: {data.period} недель</li>
-    <li>Заморозка: {data.freezePeriod} дней</li>
+    {data.freezePeriod && <li>Заморозка: {data.freezePeriod} дней</li>}
   </ul>
   <div>
     <div class="_lesson-price">{data.lessonPrice}₽</div>
@@ -24,11 +24,19 @@ import ButtonLink from "./ButtonLink.astro";
   </div>
 
   <div class="_action">
-    <div class="_buy-split">
-      <ButtonLink theme="ghost" href="#buy-split">В рассрочку</ButtonLink>
-    </div>
+    {
+      data.split && (
+        <div class="_buy-split">
+          <ButtonLink theme="link" href="#buy-split">
+            В рассрочку
+          </ButtonLink>
+        </div>
+      )
+    }
+
     <div class="_buy">
-      <ButtonLink theme="primary" href="#buy">Купить</ButtonLink>
+      {data.popular && <ButtonLink theme="primary" href="#buy">Купить</ButtonLink>}
+      {!data.popular && <ButtonLink theme="ghost" href="#buy">Купить</ButtonLink>}
     </div>
   </div>
 </div>
@@ -46,9 +54,6 @@ import ButtonLink from "./ButtonLink.astro";
     border: 1px solid var(--color-line);
     text-align: center;
     box-shadow: var(--shadow-1);
-    animation-timeline: view();
-    animation-name: showLong;
-    animation-fill-mode: both;
     background-color: var(--color-surface-0-light);
 
     &:has(._tag) {
@@ -56,48 +61,15 @@ import ButtonLink from "./ButtonLink.astro";
     }
 
     &:last-child:has(._tag) {
-      background-image: linear-gradient(25deg,rgb(255 0 50 / 15%),transparent);
-    }
-
-    &:nth-child(3n + 1) {
-      @keyframes showLong {
-        from {
-          translate: 0 30%;
-        }
-        to {
-          translate: 0 0;
-        }
-      }
-    }
-
-    &:nth-child(3n + 2) {
-      animation-name: showLong2;
-
-      @keyframes showLong2 {
-        from {
-          translate: 0 40%;
-        }
-        to {
-          translate: 0 0;
-        }
-      }
-    }
-
-    &:nth-child(3n + 3) {
-      animation-name: showLong3;
-
-      @keyframes showLong3 {
-        from {
-          translate: 0 50%;
-        }
-        to {
-          translate: 0 0;
-        }
-      }
+      background-image: linear-gradient(
+        25deg,
+        rgb(255 0 50 / 15%),
+        transparent
+      );
     }
 
     &.\+popular {
-      padding-block: 2.4rem;
+      // padding-block: 2.4rem;
       box-shadow: var(--shadow-3);
     }
 
@@ -121,8 +93,9 @@ import ButtonLink from "./ButtonLink.astro";
     }
 
     ._name {
-      font-weight: 500;
       font-size: 3.2rem;
+      font-weight: 600;
+      font-family: var(--font-family-secondary);
     }
 
     ._features-list {
@@ -132,6 +105,9 @@ import ButtonLink from "./ButtonLink.astro";
     }
 
     ._lesson-price {
+      font-size: 2.4rem;
+      font-weight: 600;
+      font-family: var(--font-family-secondary);
     }
 
     ._price {
@@ -146,12 +122,21 @@ import ButtonLink from "./ButtonLink.astro";
       font-size: 3.2rem;
       font-weight: 700;
       color: var(--color-accent);
+      font-family: var(--font-family-secondary);
     }
 
     ._action {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
     }
 
     ._buy {
+      flex: 1;
+
+      > * {
+        width: 100%;
+      }
     }
   }
 </style>

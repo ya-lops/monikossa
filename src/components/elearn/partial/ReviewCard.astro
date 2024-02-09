@@ -2,78 +2,28 @@
 const { data } = Astro.props;
 ---
 
-<section class="app-review-card">
-  <div class="_image">
-    <img src={data.image} alt="" loading="lazy"/>
+<section class="app-review-card +frame">
+  <div class="_inner">
+    <div class="_image">
+      <img src={data.image} alt="" loading="lazy" />
+    </div>
+    <div class="_name">{data.name}</div>
+    <p class="_text">"{data.text}"</p>
   </div>
-  <div class="_name">{data.name}</div>
-  <p class="_text">"{data.text}"</p>
 </section>
 
 <style lang="scss">
   .app-review-card {
-    position: relative;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto minmax(0,1fr);
-    justify-items: center;
-    justify-content: center;
-    gap: 1.6rem 2.4rem;
-    padding: 5rem;
-    border-radius: 1.6rem;
-    isolation: isolate;
-
-    &::after,
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: var(--color-surface-1);
-      border-radius: 40%;
-    }
-
-    &::after {
-      background: var(--color-accent);
-      z-index: -2;
-      rotate: 2deg
-    }
-
-    &:nth-child(1) {
-      &::before,
-      &::after {
-        transform: perspective(100px) skewX(-4deg) rotateX(2deg);
-        border-radius: 20% 10% 20% 24%;
-      }
-
-      &::after {
-        transform: perspective(100px) skewX(1deg) rotateX(2deg);
-      }
-    }
-
-    &:nth-child(2) {
-      &::before,
-      &::after {
-        transform: perspective(100px) skewX(-3deg) rotateX(1deg);
-        border-radius: 10% 20% 20% 20%;
-      }
-
-      &::after {
-        rotate: -1deg;
-        transform: perspective(120px) skewY(-4deg) rotateX(-1deg) translateY(5%);
-      }
-    }
-
-    &:nth-child(3) {
-      &::before,
-      &::after {
-        transform: perspective(100px) skewX(-1.3deg) rotateX(-1deg);
-        border-radius: 13% 20% 10% 20%;
-      }
-
-      &::after {
-        transform: perspective(100px) skewX(-4deg) rotateX(-2deg);
-      }
+    ._inner {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto minmax(0, 1fr);
+      justify-items: center;
+      justify-content: center;
+      background: var(--color-surface-0);
+      gap: 1.6rem 2.4rem;
+      padding: 5rem;
+      height: 100%;
     }
 
     ._image {

@@ -1,5 +1,7 @@
 ---
-interface Props {
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"section"> {
   title: string;
   subtitle?: string;
   actionLink?: string;
@@ -8,6 +10,7 @@ interface Props {
   imageOneSrc?: string;
   imageTwoSrc?: string;
   classes?: string;
+  centeredTitle?: boolean;
 }
 
 const {
@@ -19,12 +22,18 @@ const {
   imageOneSrc,
   imageTwoSrc,
   classes,
+  centeredTitle,
   ...rest
 } = Astro.props;
 ---
 
 <section
-  class:list={["app-section", { "+split": split }, { classes }]}
+  class:list={[
+    "app-section",
+    { "+split": split },
+    { "+centered-title": centeredTitle },
+    { classes },
+  ]}
   {...rest}
   x-data="{show: false}"
   x-intersect:enter="show = true"
@@ -51,6 +60,7 @@ const {
       <div class="_splitwrap">
         <header class="app-section__header">
           <h2 class="_title" set:html={title} />
+
           {
             subtitle && (
               <h4 class="_subtitle">
@@ -58,17 +68,16 @@ const {
               </h4>
             )
           }
+
           {
-            !split && (
+            !split && actionLabel && actionLink && (
               <div class="_action">
                 <a href={actionLink}>{actionLabel}</a>
               </div>
             )
           }
         </header>
-        <div class="app-section__content">
-          <slot />
-        </div>
+        <div class="app-section__content"><slot /></div>
       </div>
     </div>
   </div>
@@ -76,7 +85,8 @@ const {
 
 <style lang="scss">
   .app-section {
-    padding-block: clamp(4.6rem, 6.75%, 13rem);
+    padding-block: clamp(4.6rem, 6.75%, 8rem);
+    overflow: clip;
 
     &:nth-child(even of .app-section) {
       background: var(--color-surface-1);
@@ -120,7 +130,7 @@ const {
       }
 
       > * {
-        border-radius: 2.4rem;
+        // border-radius: 2.4rem;
         overflow: clip;
 
         img {
@@ -159,6 +169,10 @@ const {
         font-size: clamp(2.4rem, 2vw, 3.6rem);
         line-height: 1.15;
         text-wrap: balance;
+
+        .\+centered-title & {
+          text-align: center;
+        }
       }
 
       ._subtitle {
@@ -171,12 +185,14 @@ const {
         font-weight: 500;
         text-transform: uppercase;
         text-wrap: balance;
+        font-family: "Exo 2";
+        font-weight: 600;
 
         div {
           transform-origin: 5% 50%; // experimental
           scale: 12; // experimental
-          opacity: 0.055; // experimental
-          
+          opacity: 0.035; // experimental
+
           &::before {
             content: "";
             width: 3.5rem;
