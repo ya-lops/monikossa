@@ -1,0 +1,18 @@
+---
+import Heroes from "@/layouts/Heroes.astro";
+---
+
+<Heroes>
+  <div class="heroes">
+    <div class="hero-name" transition:name="name" transition:animate="slide">Frost</div>
+    <div class="hero-image">
+      <img src="/images/heroes/Frost.png" transition:name="image"/>
+    </div>
+  </div>
+</Heroes>
+
+<style is-global>
+  .heroes {
+    background: linear-gradient(hsl(192, 18%, 52%), hsl(205, 88%, 37%));
+  }
+</style>

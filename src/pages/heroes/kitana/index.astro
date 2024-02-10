@@ -1,0 +1,18 @@
+---
+import Heroes from "@/layouts/Heroes.astro";
+---
+
+<Heroes>
+  <div class="heroes">
+    <div class="hero-name" transition:name="name" transition:animate="slide">Kitana</div>
+    <div class="hero-image">
+      <img src="/images/heroes/Kitana.png" transition:name="image"/>
+    </div>
+  </div>
+</Heroes>
+
+<style is-global>
+  .heroes {
+    background: linear-gradient(hsl(234, 87%, 15%), hsl(231, 78%, 36%));
+  }
+</style>

@@ -1,0 +1,112 @@
+---
+import { ViewTransitions } from "astro:transitions";
+---
+
+<!doctype html>
+<html lang="en" id="heroes">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <ViewTransitions />
+  </head>
+  <body>
+    <div class="app">
+      <div class="hero-nav">
+        <a href="/heroes">Frost</a>
+        <a href="/heroes/skarlet">Skarlet</a>
+        <a href="/heroes/shangtsung">Shang Tsung</a>
+        <a href="/heroes/kitana">Kitana</a>
+      </div>
+      <slot />
+    </div>
+    <script>
+      document.addEventListener("mousemove", (e) => {
+        Object.assign(document.documentElement, {
+          style: `
+            --mouse-x: ${(e.clientX - window.innerWidth / 2) * 0.005};
+            --mouse-y: ${(e.clientY - window.innerHeight / 2) * 0.005};
+          `,
+        });
+      });
+
+      document.addEventListener("mouseenter", (e) => {
+        Object.assign(document.documentElement, {
+          style: `
+            --mouse-x: ${(e.clientX - window.innerWidth / 2) * 0.005};
+            --mouse-y: ${(e.clientY - window.innerHeight / 2) * 0.005};
+          `,
+        });
+      });
+    </script>
+    <style lang="scss" is:global>
+      #heroes {
+        position: relative;
+
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+        }
+
+        .hero-nav {
+          position: absolute;
+          left: 50%;
+          top: 10vh;
+          display: flex;
+          gap: 50px;
+          color: #fff;
+          font-size: 40px;
+          transform: translateX(-50%);
+          z-index: 12;
+
+          a {
+            color: inherit;
+            text-decoration: none;
+          }
+        }
+
+        .heroes {
+          display: grid;
+          grid-template-columns: 100%;
+          grid-template-rows: 100%;
+          width: 100vw;
+          height: 100vh;
+          transition: 0.25s;
+          perspective: 1000px;
+          transform-style: preserve-3d;
+          overflow: clip;
+        }
+
+        .hero-name {
+          grid-area: 1/1/-1/-1;
+          place-self: center;
+          color: #fff;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          font-size: 20vw;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 2vw;
+          transform: translateZ(10px) translateX(calc(var(--mouse-x) * -5px))
+            translateY(calc(var(--mouse-y) * -5px))
+            rotateX(calc(var(--mouse-y) * 2deg))
+            rotateY(calc(var(--mouse-x) * 2deg));
+        }
+
+        .hero-image {
+          grid-area: 1/1/-1/-1;
+          place-self: end center;
+          transform: translateY(30px) rotateX(calc(var(--mouse-y) * 1deg))
+            rotateY(calc(var(--mouse-x) * 1deg));
+          user-select: none;
+          pointer-events: none;
+        }
+      }
+    </style>
+  </body>
+</html>
