@@ -1,0 +1,73 @@
+---
+const flow = [
+  {
+    name: "Урок 30 минут",
+    text: "Если ваш мозг устает, он отторгает новую информацию. Поэтому занятие длится максимум 30 минут, но в интенсивном формате.",
+  },
+  {
+    name: "Нет домашних заданий",
+    text: 'У нас не нужно тратить время на домашку. Более 60% учеников "сливаются" именно по этой причине. Урок не требует подготовки, и нет обязательств перед учителем.',
+  },
+  {
+    name: "До 4 преподавателей",
+    text: "Чтобы убрать барьер, понимать разные акценты и скорость речи, с одним учеником занимаются 3-4 преподавателя, в том числе носители языка. Занятие проходит 1 на 1 с учителем.",
+  },
+  {
+    name: "Вы решаете сколько занятий",
+    text: "Вы можете заниматься онлайн, где и когда угодно: дома, на работе, в дороге, с компьютера или смартфона. Мы подстроимся под ваше расписание. Рекомендуем минимум 3 занятия в неделю.",
+  },
+];
+
+const data = flow;
+---
+
+<ul class="app-how-list">
+  {
+    data.map((item) => (
+      <li class="_item">
+        <div class="_name">{item.name}</div>
+        <div class="_text" set:html={item.text} />
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  .app-how-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-auto-rows: minmax(0, 1fr);
+    gap: 4.8rem;
+
+    @media (width < 960px) {
+      grid-template-columns: minmax(0, 1fr);
+      grid-auto-rows: unset;
+    }
+
+    ._item {
+      @media (width > 960px) {
+        &:nth-child(2n + 1) {
+          display: flex;
+          flex-flow: column;
+          align-items: flex-end;
+          text-align: right;
+        }
+      }
+    }
+
+    ._name {
+      font-size: 3.2rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+      font-family: var(--font-family-secondary);
+      text-wrap: balance;
+    }
+
+    ._text {
+      line-height: 1.5;
+      text-wrap: balance;
+    }
+  }
+</style>

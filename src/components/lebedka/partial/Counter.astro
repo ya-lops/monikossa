@@ -1,0 +1,53 @@
+---
+const data = [
+  {
+    label: "объектов",
+    value: 12300,
+  },
+  {
+    label: "лет опыта",
+    value: 15,
+  },
+  {
+    label: "сотрудников",
+    value: 200,
+  },
+];
+---
+
+<div class="app-counter">
+  {
+    data.map((item) => (
+      <div class="app-counter__item">
+        <div class="_value">{item.value}</div>
+        <div class="_label">{item.label}</div>
+      </div>
+    ))
+  }
+</div>
+
+<style lang="scss">
+  .app-counter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+    padding-block: 2.4rem;
+
+    &__item {
+      ._label {
+        color: var(--color-text-secondary);
+        font-size: 1.4rem;
+      }
+
+      ._value {
+        color: var(--color-text-primary);
+        font-size: 2.4rem;
+        font-weight: 600;
+
+        &::after {
+          content: "+";
+        }
+      }
+    }
+  }
+</style>

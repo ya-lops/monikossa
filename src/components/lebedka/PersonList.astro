@@ -1,0 +1,30 @@
+---
+import teachers from "@/data/elearn/teachers";
+
+import PersonCard from "./partial/PersonCard.astro";
+
+const data = teachers;
+---
+
+<div class="app-teachers">
+  <div class="app-pricing__inner">
+    {data.map((person) => <PersonCard data={person} />)}
+  </div>
+</div>
+
+<style lang="scss">
+  .app-pricing {
+    width: 100%;
+    
+    &__inner {
+      display: grid;
+      // grid-auto-flow: column dense;
+      gap: 2.4rem;
+
+      @media (width > 992px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2.4rem;
+      }
+    }
+  }
+</style>
