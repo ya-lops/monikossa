@@ -24,11 +24,13 @@ import ButtonLink from "@/components/lebedka/partial/ButtonLink.astro";
   <Section
     centeredTitle
     subtitle="лебёдка"
-    title="Мы специализируемся на оказании помощи в сложных внедорожных ситуациях. Наша команда профессионалов готова прийти на помощь в любое время и в любом месте, чтобы вытащить вас из грязи, снега или других сложных условий."/>
+    title="Мы специализируемся на оказании помощи в сложных внедорожных ситуациях. Наша команда профессионалов готова прийти на помощь в любое время и в любом месте, чтобы вытащить вас из грязи, снега или других сложных условий."
+  />
 
   <Section
     id="how-it-works"
     title="Почему <mark>мы сможем помочь</mark>"
+    subtitle="Почему мы"
   >
     <Split>
       <Fragment slot="start">
@@ -40,43 +42,28 @@ import ButtonLink from "@/components/lebedka/partial/ButtonLink.astro";
     </Split>
   </Section>
 
-  <!-- Блок 2 - Как работает метод -->
   <Section
     centeredTitle
     subtitle="лебёдка"
     title="Мы используем только самое современное оборудование и технику, чтобы обеспечить <mark>быстрое и эффективное решение вашей проблемы</mark>. Доверьтесь нам, и мы вытащим вас из любой ситуации!</span>"
   />
 
-  <!-- Блок 3 - Как проходит пробное занятие и что в него входит -->
   <Section
     centeredTitle
     title="В каких ситуациях <mark>мы сможем помочь</mark>"
+    subtitle="Помощь каждому"
   >
-    <Split>
+    <WorkFlow />
+    <!-- <Split>
       <Fragment slot="end">
-        <WorkFlow />
-      </Fragment>
-      <Fragment slot="start">
         <img src="/images/lebedka/help2.jpg" />
       </Fragment>
-    </Split>
+      <Fragment slot="start">
+        <WorkFlow />
+      </Fragment>
+    </Split> -->
   </Section>
 
-  <!-- Блок 4 - Как проходит пробное занятие и что в него входит -->
-  <!-- Но тут совершенно другое -->
-  <!-- <Section
-    centeredTitle
-    title="Запишитесь на <mark>бесплатный пробный урок</mark> и получите скидку до 55%"
-  >
-    <ButtonLink
-      classes="+centered"
-      size="l"
-      href="#get-free-lesson-form"
-      theme="ghost">Записаться на пробный урок</ButtonLink
-    >
-  </Section> -->
-
-  <!-- Блок 5 - Наши преподаватели -->
   <!-- <Section
     id="teachers"
     title="Наши учителя – <mark>друзья,</mark> с которыми легко найти английский язык"
@@ -95,7 +82,6 @@ import ButtonLink from "@/components/lebedka/partial/ButtonLink.astro";
     </div>
   </Section> -->
 
-  <!-- Блок 6 - Отзывы наших учеников  -->
   <!-- <Section
     id="pricing"
     title="Научитесь говорить и думать на английском от <mark>599₽</mark>"
@@ -104,11 +90,19 @@ import ButtonLink from "@/components/lebedka/partial/ButtonLink.astro";
     <Pricing />
   </Section> -->
 
-  <Section title="<mark>Лебёдка</mark> помогает каждому">
-    <Features />
+  <Section title="<mark>Как</mark> мы помогаем">
+    <Split>
+      <Fragment slot="end">
+        <img src="/images/lebedka/help3.jpg" />
+      </Fragment>
+      <Fragment slot="start">
+        <Features />
+      </Fragment>
+    </Split>
   </Section>
 
-  <!-- Блок 7 - Отзывы наших учеников  -->
+  </Section>
+
   <Section
     title="Более <mark>750</mark> обратившимся успешно оказана помощь"
     subtitle="из грязи в князи"
@@ -116,7 +110,6 @@ import ButtonLink from "@/components/lebedka/partial/ButtonLink.astro";
     <Review />
   </Section>
 
-  <!-- Блок 8 - Приглашение на пробный урок -->
   <Section
     subtitle="помогать"
     title="Вступайте <mark>в группу помощи</mark> и получите скидку до 25%"
@@ -129,10 +122,9 @@ import ButtonLink from "@/components/lebedka/partial/ButtonLink.astro";
     >
   </Section>
 
-  <!-- Блок 9 - блок ответов на вопросы -->
-  <!-- <Section id="faq" title="Часто задаваемые вопросы" subtitle="Вопросы">
+  <Section id="faq" title="Часто задаваемые вопросы" subtitle="Вопросы">
     <Faq />
-  </Section> -->
+  </Section>
 
   <Footer />
 </Lebedka>
@@ -155,23 +147,25 @@ import ButtonLink from "@/components/lebedka/partial/ButtonLink.astro";
   .\+frame {
     position: relative;
     isolation: isolate;
+    
 
     &::after {
       content: "";
       position: absolute;
       inset: 0;
       background: var(--color-accent);
-      transform: rotate(1deg) skewX(2deg);
+      transform: rotate(1deg) skewX(.9deg);
       z-index: -1;
       border-radius: var(--radius-3);
+      opacity: .25;
     }
 
     & + &::after {
-      transform: rotate(-0.5deg) skewX(-2.71deg);
+      transform: rotate(-0.5deg) skewX(-.71deg);
     }
 
     & + & + &::after {
-      transform: rotate(-1.5deg) skewX(-1.71deg);
+      transform: rotate(-1.2deg) skewX(-.11deg);
     }
   }
 
