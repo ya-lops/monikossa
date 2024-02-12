@@ -41,6 +41,7 @@ const data = {
     height: var(--_height);
     background: var(--color-surface-1);
     overflow: clip;
+    background-image: linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)), url(/images/lebedka/bg1.jpg);
 
     &__inner {
       display: grid;
@@ -118,11 +119,10 @@ const data = {
 
         @keyframes shadowin {
           from {
-            filter: drop-shadow(0 0 0 #fe52523d) drop-shadow(0 0 0 #fe525221);
+            filter: drop-shadow(0 0 0 #ae52523d) drop-shadow(0 0 0 #ae525221) drop-shadow(0 0 0 #ae52523d) drop-shadow(0 0 0 #ae525221);
           }
           to {
-            filter: drop-shadow(42px 0 0 #fe52523d)
-              drop-shadow(84px 0 0 #fe525221);
+            filter: drop-shadow(42px 0 0 #ae52523d) drop-shadow(84px 0 0 #ae525221) drop-shadow(-42px 0 0 #ae52523d) drop-shadow(-84px 0 0 #ae525221);
           }
         }
 

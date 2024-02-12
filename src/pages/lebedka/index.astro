@@ -52,7 +52,14 @@ import ButtonLink from "@/components/lebedka/partial/ButtonLink.astro";
     centeredTitle
     title="В каких ситуациях <mark>мы сможем помочь</mark>"
   >
-    <WorkFlow />
+    <Split>
+      <Fragment slot="end">
+        <WorkFlow />
+      </Fragment>
+      <Fragment slot="start">
+        <img src="/images/lebedka/help2.jpg" />
+      </Fragment>
+    </Split>
   </Section>
 
   <!-- Блок 4 - Как проходит пробное занятие и что в него входит -->
